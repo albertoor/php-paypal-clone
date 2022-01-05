@@ -14,7 +14,7 @@
           <a class="link_form" href="forgot-password">
             Already have an account?
           </a>
-          <a href="?controller=pages&action=login" class="secondary_btn">Login</a>
+          <a href="?controller=users&action=login" class="secondary_btn">Login</a>
         </form>
     </div>
 </section>
