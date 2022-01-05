@@ -1,5 +1,5 @@
 <?php
-include_once("controllers/".$controller."_controller.php");
+include_once("controllers/controller_".$controller.".php");
 
 $controllerObj = ucfirst($controller)."Controller";
 
