@@ -7,6 +7,18 @@ DB::createInstance();
 
 class UsersController {
     public function login(){
+        if ($_POST) {
+            $email = $_POST['email'];
+            $encryptedPwd = md5($_POST['password']);
+            if ( ($email == "" || $encryptedPwd == "" )) {
+                echo "Fill fields please";
+            } else {
+                User::loginProcess($email, $password);
+                session_start();
+                $_SESSION['email'] = $email;
+                header("Location:./?controller=users&action=my_account");
+            }
+        }
         include_once("views/pages/login.php");
     }
 
@@ -25,7 +37,21 @@ class UsersController {
         }
         include_once("views/pages/signup.php");
     }
+
+    public function logout() {
+        session_start();
+        session_unset();
+        session_destroy();
+        include_once("views/users/my_account.php");
+        header("Location:./?controller=users&action=login");
+    }
+
+    public function validateSession(){
+        
+    }
+
+    public function my_account(){
+        include_once("views/users/my_account.php");
+    }
 }
-
-
 ?>

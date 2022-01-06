@@ -16,6 +16,12 @@ class User{
     }
 
     public static function loginProcess($email, $password) {
+        $connectionDB = DB::createInstance();
+        $sql = $connectionDB->prepare("SELECT * FROM users WHERE email=? AND password=?");
+        $user = $sql->fetch();
+        if (!$sql->execute(array($email, $password))) {
+            echo "Incorrect Credentials";
+        }
     }
 
     public static function signUpProcess($fullname, $email, $password, $birthDate) {
