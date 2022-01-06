@@ -13,10 +13,7 @@ class UsersController {
             if ( ($email == "" || $encryptedPwd == "" )) {
                 echo "Fill fields please";
             } else {
-                User::loginProcess($email, $password);
-                session_start();
-                $_SESSION['email'] = $email;
-                header("Location:./?controller=users&action=my_account");
+                User::loginProcess($email, $encryptedPwd);
             }
         }
         include_once("views/pages/login.php");

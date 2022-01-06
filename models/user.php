@@ -18,11 +18,14 @@ class User{
     public static function loginProcess($email, $password) {
         $connectionDB = DB::createInstance();
         $sql = $connectionDB->prepare("SELECT * FROM users WHERE email=? AND password=?");
-        $user = $sql->fetch();
-        if ($sql->execute(array($email, $password))) {
-            return;
+        $sql->execute(array($email, $password));
+        $count = $sql->rowCount();
+        if ($count) {
+            session_start();
+            $_SESSION['email'] = $email;
+            header("Location:./?controller=users&action=my_account");
         } else {
-            echo "Incorrect Credentials";
+            header("Location:./?controller=users&action=login&err=1");
         }
     }
 
