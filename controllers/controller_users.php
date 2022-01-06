@@ -40,14 +40,12 @@ class UsersController {
 
     public function logout() {
         session_start();
-        session_unset();
         session_destroy();
-        include_once("views/users/my_account.php");
         header("Location:./?controller=users&action=login");
     }
 
     public function validateSession(){
-        
+
     }
 
     public function my_account(){

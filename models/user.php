@@ -19,7 +19,9 @@ class User{
         $connectionDB = DB::createInstance();
         $sql = $connectionDB->prepare("SELECT * FROM users WHERE email=? AND password=?");
         $user = $sql->fetch();
-        if (!$sql->execute(array($email, $password))) {
+        if ($sql->execute(array($email, $password))) {
+            return;
+        } else {
             echo "Incorrect Credentials";
         }
     }

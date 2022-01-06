@@ -1,3 +1,9 @@
+<?php
+// if user is logged in redirect to my_account
+session_start ();
+if(isset($_SESSION["email"]))
+    header("Location:./?controller=users&action=my_account");
+?>
 <section class="section_form">
     <div class="card_form">
         <div class="logo">
