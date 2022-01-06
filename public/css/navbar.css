@@ -1,0 +1,31 @@
+.navbar {
+  display: flex;
+  background-color: #142d8c;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.navbar div {
+  display: flex;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.navbar li {
+  margin-left: 2rem;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar img {
+  width: 50px;
+}
