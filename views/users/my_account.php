@@ -105,7 +105,7 @@ if(!isset($_SESSION["email"]))
             <p>Debit ****1234</p>
         </div>
     </div>
-    <a href="?controller=users&action=link_card&id=<?= $_SESSION["id"]?>" class="link_card">Link a Card</a>
+    <a href="?controller=cardbank&action=link_card&id=<?= $_SESSION["id"]?>" class="link_card">Link a Card</a>
 </section>
 
 
