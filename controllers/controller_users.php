@@ -42,7 +42,7 @@ class UsersController {
     }
 
     public function my_account(){
-        include_once("views/users/my_account.php");
+        include_once("views/users/my_account.php");   
     }
 }
 ?>

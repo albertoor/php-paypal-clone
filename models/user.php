@@ -20,9 +20,11 @@ class User{
         $sql = $connectionDB->prepare("SELECT * FROM users WHERE email=? AND password=?");
         $sql->execute(array($email, $password));
         $count = $sql->rowCount();
+        $user = $sql->fetch();
         if ($count) {
             session_start();
-            $_SESSION['email'] = $email;
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['id'] = $user['id'];
             header("Location:./?controller=users&action=my_account");
         } else {
             header("Location:./?controller=users&action=login&err=1");

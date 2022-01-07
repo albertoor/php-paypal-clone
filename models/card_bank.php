@@ -20,5 +20,9 @@ class CardBank {
         $this->fund = $fund;
         $this->id_user = $id_user;
     }
+
+    // public function linkCard() {
+    //     $id_user = 
+    // }
 }
 ?>
