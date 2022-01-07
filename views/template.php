@@ -11,14 +11,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <title>Paypal Clone</title>
 </head>
 <body>
-
     <div>
-    <?php include_once("router.php");?> 
+        <?php include_once("router.php");?> 
     </div>
-
-
 </body>
 </html>

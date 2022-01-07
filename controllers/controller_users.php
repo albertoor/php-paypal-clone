@@ -41,10 +41,6 @@ class UsersController {
         header("Location:./?controller=users&action=login");
     }
 
-    public function validateSession(){
-
-    }
-
     public function my_account(){
         include_once("views/users/my_account.php");
     }
