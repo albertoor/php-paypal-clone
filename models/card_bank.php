@@ -54,5 +54,18 @@ class CardBank {
         }
         return $user_cards;
     }
+
+    public static function remove_card($id_card_bank) {
+        $connectionDB = DB::createInstance();
+        $sql = $connectionDB->prepare("DELETE FROM card_banks WHERE id_card_bank=?");
+        $sql->execute(array($id_card_bank));
+        $count = $sql->rowCount();
+        
+        if ($count) {
+            header("Location:./?controller=cardbank&action=success_add_card");
+        } else {
+            header("Location:./?controller=users&action=login&err=1");
+        }
+    }
 }
 ?>

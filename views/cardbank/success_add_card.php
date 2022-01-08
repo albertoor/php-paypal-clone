@@ -6,5 +6,5 @@ if(!isset($_SESSION["email"]))
     header("Location:./?controller=users&action=login");
 ?>
 
-<h1>Has agregado la tarjeta con exito </h1>
+<h1>Operation succefull</h1>
 <a href="?controller=cardbank&action=link_card&id=<?= $_SESSION["id"]?>">Continue</a>

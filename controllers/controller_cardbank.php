@@ -30,6 +30,13 @@ class CardBankController {
         }
         include_once("views/cardbank/add_card.php");
     }
+
+    public function remove_card() {
+        $id_card_bank = $_REQUEST['id_card_bank'];
+        $id = $_REQUEST['id'];
+        CardBank::remove_card($id_card_bank);
+        header("Location:./?controller=cardbank&action=link_card&id="+ id);
+    }
 }
 
 

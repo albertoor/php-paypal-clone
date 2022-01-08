@@ -44,6 +44,16 @@ if(!isset($_SESSION["email"]))
         font-weight: 450;
     }
 
+    .btn_action {
+        color: #0f9edd;
+        font-weight: 400;
+        text-decoration:none;
+        margin-bottom:.5rem;
+    }
+    .btn_action:hover {
+        text-decoration:underline;
+    }
+
 </style>
 
 <div class="link_card_option">
@@ -68,8 +78,8 @@ if(!isset($_SESSION["email"]))
             <p><?php echo $user_card->billing_address; ?></p>    
             <h4>Funds</h4>
             <p>$ <?php echo $user_card->fund; ?></p>    
-            <a href="#">Update card</a>
-            <a href="#">Remove card</a>
+            <a style="color: #eed202;" class="btn_action" href="?controller=cardbank&action=update_card&id_card_bank=<?php echo $user_card->id_card_bank ?> ">Update card</a>
+            <a style="color: red;" class="btn_action" href="?controller=cardbank&action=remove_card&id_card_bank=<?php echo $user_card->id_card_bank ?>">Remove card</a>
         </div>
     <?php } ?>
 </section>
