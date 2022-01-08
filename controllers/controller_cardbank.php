@@ -8,6 +8,10 @@ class CardBankController {
     public function link_card() {
         include_once("views/cardbank/card_bank.php");
     }
+
+    public function add_card() {
+        include_once("views/cardbank/add_card.php");
+    }
 }
 
 
