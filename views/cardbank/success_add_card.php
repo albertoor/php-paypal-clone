@@ -4,7 +4,6 @@ session_start ();
 include "partials/navbar.php";
 if(!isset($_SESSION["email"]))
     header("Location:./?controller=users&action=login");
-    // echo $_SESSION["id"];
 ?>
 
 <h1>Has agregado la tarjeta con exito </h1>

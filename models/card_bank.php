@@ -14,7 +14,7 @@ class CardBank {
         $this->id_card_bank = $id_card_bank;
         $this->card_number = $card_number;
         $this->card_type = $card_type;
-        $this->expiration_code = $expiration_code;
+        $this->expiration_date = $expiration_date;
         $this->security_code = $security_code;
         $this->billing_address = $billing_address;
         $this->fund = $fund;
@@ -32,6 +32,27 @@ class CardBank {
         } else {
             header("Location:./?controller=users&action=login&err=1");
         }
+    }
+
+    public static function all_user_cards($id_user) {
+        $user_cards = [];
+        $connectionDB = DB::createInstance();
+        $sql = $connectionDB->prepare("SELECT * FROM card_banks WHERE id_user=?");
+        $sql->execute(array($id_user));
+        
+        foreach($sql->fetchAll() as $card_bank) {
+            $user_cards[] = new CardBank(
+                            $card_bank['id_card_bank'],
+                            $card_bank['card_number'],
+                            $card_bank['card_type'],
+                            $card_bank['expiration_date'],
+                            $card_bank['security_code'],
+                            $card_bank['billing_address'],
+                            $card_bank['fund'],
+                            $card_bank['id_user']
+            );
+        }
+        return $user_cards;
     }
 }
 ?>

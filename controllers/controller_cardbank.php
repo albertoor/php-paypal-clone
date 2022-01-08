@@ -6,7 +6,10 @@ DB::createInstance();
 
 class CardBankController {
     public function link_card() {
-        include_once("views/cardbank/card_bank.php");
+        // List all user cards
+        $id_user = $_REQUEST["id"];
+        $user_cards = CardBank::all_user_cards($id_user);
+        include_once("views/cardbank/card_bank.php");   
     }
 
     public function success_add_card() {
