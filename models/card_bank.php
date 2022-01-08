@@ -25,6 +25,13 @@ class CardBank {
         $connectionDB = DB::createInstance();
         $sql = $connectionDB->prepare("INSERT INTO card_banks(card_number, card_type, expiration_date, security_code, billing_address, fund, id_user) VALUES (?,?,?,?,?,?,?)");
         $sql->execute(array($card_number, $card_type, $expiration_date, $security_code, $billing_address, $fund, $id_user));
+        $count = $sql->rowCount();
+        
+        if ($count) {
+            header("Location:./?controller=cardbank&action=success_add_card");
+        } else {
+            header("Location:./?controller=users&action=login&err=1");
+        }
     }
 }
 ?>
