@@ -5,6 +5,47 @@ include "partials/navbar.php";
 if(!isset($_SESSION["email"]))
     header("Location:./?controller=users&action=login");
 ?>
+
+<style>
+    .link_card_option {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        margin:1rem 1rem;
+        padding:1rem 1rem;
+        width: 150px;
+    }
+    .link_card_option a {
+        display:flex;
+        width: 150px;
+        justify-content:center;
+        align-items:center;
+        text-decoration:none;
+        color: black;
+        font-weight: 450;
+    }
+    .cards_container_list{
+        display:flex;
+        flex-wrap: wrap;
+    }
+    .card_bank {
+        display:flex;
+        flex-direction:column;
+        border-radius:10px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        padding:1rem 1rem;
+        margin:1rem 1rem;
+        width:auto;
+    }
+    .card_bank p {
+        margin-bottom:1rem;    
+    }
+    .title_cards{
+        margin:1rem 1rem;
+        color: #0f9edd;
+        font-weight: 450;
+    }
+
+</style>
+
 <div class="link_card_option">
         <a href="?controller=cardbank&action=link_new_card&id=<?= $_SESSION["id"]?>">
             <span class="material-icons">
@@ -14,37 +55,21 @@ if(!isset($_SESSION["email"]))
         </a>
     </div>
 <div>
-<?php foreach ($user_cards as $user_card) { ?>    
-    <?php echo $user_card->card_type; ?>
-    <section class="card_bank">
-            <div>
-                <span class="material-icons">
-                    payment
-                </span>
-                </div>
-            <div>
-                <h4><?php echo $user_card->card_type; ?></h4>
-                <p><?php echo $user_card->card_number; ?></p>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div>
-            <img src="public/img/visa_card.png" alt="">
+
+<h2 class="title_cards">Your linked cards</h2>
+<section class="cards_container_list">
+    <?php foreach ($user_cards as $user_card) { ?>    
+        <div class="card_bank">
+            <h4><?php echo $user_card->card_type; ?></h4>
             <p><?php echo $user_card->card_number; ?></p>
-        </div>
-        <p>Visa Debit <?php echo $user_card->card_number; ?></p>
-        <div>
-            <h5>Expiration date</h5>
-            <p><?php echo $user_card->card_number; ?></p>
-        </div>
-        <div>
-            <h5>Billing address</h5>
-            <p><?php echo $user_card->billing_address; ?></p>
-        </div>
-        <div>
+            <h4>Expiration date</h4>
+            <p><?php echo $user_card->expiration_date; ?></p>
+            <h4>Billing address</h4>
+            <p><?php echo $user_card->billing_address; ?></p>    
+            <h4>Funds</h4>
+            <p>$ <?php echo $user_card->fund; ?></p>    
             <a href="#">Update card</a>
             <a href="#">Remove card</a>
         </div>
-    </section>
-<?php } ?>
+    <?php } ?>
+</section>
