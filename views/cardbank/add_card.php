@@ -43,23 +43,35 @@ if(!isset($_SESSION["email"]))
         color: #fff;
         border: none;
         border-radius: 10px;
+        cursor: pointer;
     }
 </style>
 
 <div class="add_card">
     <h2>Link a card</h2>
     <img src="public/img/form-logo-paypal.png" alt="logo" >
-    <form action="">
-        <input type="text" name="card_number" id="card_number" placeholder="Card number" required>
-        <select name="" id="" value="Select your card type" required>
+    <form action="" method="POST">
+        <input type="text" name="card_number" id="card_number" placeholder="Card number" required maxlength="16">
+        <select name="card_type" id="card_type" value="Select your card type" required>
             <option value="Visa">Visa</option>
             <option value="Mastercard">Mastercard</option>
             <option value="American/Express">American/Express</option>
             <option value="Discover">Discover</option>
         </select>
-        <input type="text" name="expiration_date" id="expiration_date" placeholder="mm-yyyy" required>
-        <input type="number" name="security_code" id="security_code" placeholder="Security code" required>
+        <input type="text" name="expiration_date" id="expiration_date" placeholder="mm-yy" required maxlength="5">
+        <input type="number" name="security_code" id="security_code" placeholder="Security code" required maxlength="3">
         <input type="text" name="billing_address" id="billing_address" placeholder="Billing Address" required>
+        <input type="number" name="fund" id="fund" placeholder="Fund" required>
         <input class="link_card_btn" type="submit" value="Link card">
+        <?php 
+          if(isset($_REQUEST["err"]))
+            $msg="Check your data";
+          ?>
+            <p style="color:red;">
+          <?php 
+          if(isset($msg)){
+            echo $msg;
+          }
+          ?>
     </form>
 </div>

@@ -21,8 +21,10 @@ class CardBank {
         $this->id_user = $id_user;
     }
 
-    // public function linkCard() {
-    //     $id_user = 
-    // }
+    public static function link_new_card($card_number, $card_type, $expiration_date, $security_code, $billing_address, $fund, $id_user) {
+        $connectionDB = DB::createInstance();
+        $sql = $connectionDB->prepare("INSERT INTO card_banks(card_number, card_type, expiration_date, security_code, billing_address, fund, id_user) VALUES (?,?,?,?,?,?,?)");
+        $sql->execute(array($card_number, $card_type, $expiration_date, $security_code, $billing_address, $fund, $id_user));
+    }
 }
 ?>

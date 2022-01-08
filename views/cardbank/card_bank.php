@@ -7,7 +7,7 @@ if(!isset($_SESSION["email"]))
 ?>
 <section class="card_bank">
     <div class="link_card_option">
-        <a href="?controller=cardbank&action=add_card&id=<?= $_SESSION["id"]?>">
+        <a href="?controller=cardbank&action=link_new_card&id=<?= $_SESSION["id"]?>">
             <span class="material-icons">
                 credit_card
             </span>
