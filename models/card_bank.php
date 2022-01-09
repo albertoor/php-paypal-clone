@@ -28,7 +28,7 @@ class CardBank {
         $count = $sql->rowCount();
         
         if ($count) {
-            header("Location:./?controller=cardbank&action=success_add_card");
+            header("Location:./?controller=cardbank&action=success");
         } else {
             header("Location:./?controller=users&action=login&err=1");
         }
@@ -62,10 +62,46 @@ class CardBank {
         $count = $sql->rowCount();
         
         if ($count) {
-            header("Location:./?controller=cardbank&action=success_add_card");
+            header("Location:./?controller=cardbank&action=success");
         } else {
             header("Location:./?controller=users&action=login&err=1");
         }
+    }
+
+    public static function update_card($id_card_bank,$card_number,$card_type,$expiration_date,$security_code,$billing_address,$fund, $id_user){
+        $connectionDB = DB::createInstance();
+        $sql = $connectionDB->prepare("UPDATE card_banks SET 
+            card_number=?, card_type=?, 
+            expiration_date=?, security_code=?,
+            billing_address=?, fund=?, id_user=?
+            WHERE id_card_bank=?");
+        $sql->execute(array(
+            $card_number,
+            $card_type,
+            $expiration_date,
+            $security_code,
+            $billing_address,
+            $fund,
+            $id_user,
+            $id_card_bank,
+        ));
+    }
+
+    public static function findById($id_card_bank) {
+        $connectionDB = DB::createInstance();
+        $sql = $connectionDB->prepare("SELECT * FROM card_banks WHERE id_card_bank=?");
+        $sql->execute(array($id_card_bank));
+        $card_bank = $sql->fetch();
+        return new CardBank(
+            $card_bank['id_card_bank'],
+            $card_bank['card_number'],
+            $card_bank['card_type'],
+            $card_bank['expiration_date'],
+            $card_bank['security_code'],
+            $card_bank['billing_address'],
+            $card_bank['fund'],
+            $card_bank['id_user'],
+        );
     }
 }
 ?>

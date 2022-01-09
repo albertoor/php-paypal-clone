@@ -33,7 +33,7 @@ if(!isset($_SESSION["email"]))
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
         padding:1rem 1rem;
         margin:1rem 1rem;
-        width:auto;
+
     }
     .card_bank p {
         margin-bottom:1rem;    
